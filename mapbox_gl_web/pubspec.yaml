@@ -22,7 +22,10 @@ dependencies:
       url: https://github.com/Tysonpower/flutter-mapbox-gl.git
       ref: web-support-update-image
       path: mapbox_gl_platform_interface
-  mapbox_gl_dart: ^0.2.2
+  mapbox_gl_dart:
+    git:
+      url: https://github.com/hungtrn75/mapbox-gl-dart.git
+      ref: support-image-source
   image: ^3.0.0
 
 dependency_overrides:

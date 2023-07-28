@@ -641,6 +641,39 @@ class MapboxMapController: NSObject, FlutterPlatformView, MGLMapViewDelegate, Ma
             }
             result(nil)
 
+        case "style#updateImage":
+            guard let arguments = methodCall.arguments as? [String: Any] else { return }
+            guard let imageSourceId = arguments["imageSourceId"] as? String else { return }
+            guard let imageSource = mapView.style?
+                .source(withIdentifier: imageSourceId) as? MGLImageSource else { return }
+            let url = arguments["url"] as? String
+            if url != nil {
+                imageSource.url = URL(string: url!)
+            }
+            let coordinates = arguments["coordinates"] as? [[Double]]
+            if coordinates != nil {
+                let quad = MGLCoordinateQuad(
+                    topLeft: CLLocationCoordinate2D(
+                        latitude: coordinates![0][0],
+                        longitude: coordinates![0][1]
+                    ),
+                    bottomLeft: CLLocationCoordinate2D(
+                        latitude: coordinates![3][0],
+                        longitude: coordinates![3][1]
+                    ),
+                    bottomRight: CLLocationCoordinate2D(
+                        latitude: coordinates![2][0],
+                        longitude: coordinates![2][1]
+                    ),
+                    topRight: CLLocationCoordinate2D(
+                        latitude: coordinates![1][0],
+                        longitude: coordinates![1][1]
+                    )
+                )
+                imageSource.coordinates = quad
+            }
+            result(nil)
+
         case "style#removeSource":
             guard let arguments = methodCall.arguments as? [String: Any] else { return }
             guard let sourceId = arguments["sourceId"] as? String else { return }

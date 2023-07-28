@@ -80,15 +80,19 @@ packages:
     dependency: "direct main"
     description:
       path: mapbox_gl_platform_interface
-      relative: true
-    source: path
+      ref: web-support-update-image
+      resolved-ref: f11462b5e6fbba9c4e962ed2d5c6f10898a6baa5
+      url: "https://github.com/Tysonpower/flutter-mapbox-gl.git"
+    source: git
     version: "0.16.0"
   mapbox_gl_web:
     dependency: "direct main"
     description:
       path: mapbox_gl_web
-      relative: true
-    source: path
+      ref: web-support-update-image
+      resolved-ref: f11462b5e6fbba9c4e962ed2d5c6f10898a6baa5
+      url: "https://github.com/Tysonpower/flutter-mapbox-gl.git"
+    source: git
     version: "0.16.0"
   material_color_utilities:
     dependency: transitive

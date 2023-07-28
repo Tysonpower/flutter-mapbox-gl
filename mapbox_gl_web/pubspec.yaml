@@ -17,10 +17,11 @@ dependencies:
     sdk: flutter
   meta: ^1.1.7
   mapbox_gl_platform_interface:
-    git:
-      url: https://github.com/Tysonpower/flutter-mapbox-gl.git
-      ref: web-support-update-image
-      path: mapbox_gl_platform_interface
+    path: ../mapbox_gl_platform_interface
+  #  git:
+  #    url: https://github.com/Tysonpower/flutter-mapbox-gl.git
+  #    ref: web-support-update-image
+  #    path: mapbox_gl_platform_interface
   mapbox_gl_dart:
     git:
       url: https://github.com/hungtrn75/mapbox-gl-dart.git

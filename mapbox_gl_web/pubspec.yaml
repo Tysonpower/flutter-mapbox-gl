@@ -27,9 +27,9 @@ dependencies:
       ref: support-image-source
   image: '>=3.0.0 <5.0.0'
 
-dependency_overrides:
-  mapbox_gl_platform_interface:
-    path: ../mapbox_gl_platform_interface
+#dependency_overrides:
+#  mapbox_gl_platform_interface:
+#    path: ../mapbox_gl_platform_interface
 
 dev_dependencies:
   flutter_test:

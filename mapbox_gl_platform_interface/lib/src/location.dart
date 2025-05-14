@@ -14,9 +14,9 @@ class LatLng {
   /// The longitude is normalized to the half-open interval from -180.0
   /// (inclusive) to +180.0 (exclusive)
   const LatLng(double latitude, double longitude)
-      : latitude =
-            (latitude < -90.0 ? -90.0 : (90.0 < latitude ? 90.0 : latitude)),
-        longitude = (longitude + 180.0) % 360.0 - 180.0;
+    : latitude =
+          (latitude < -90.0 ? -90.0 : (90.0 < latitude ? 90.0 : latitude)),
+      longitude = (longitude + 180.0) % 360.0 - 180.0;
 
   /// The latitude in degrees between -90.0 and 90.0, both inclusive.
   final double latitude;
@@ -53,7 +53,7 @@ class LatLng {
   }
 
   @override
-  int get hashCode => hashValues(latitude, longitude);
+  int get hashCode => Object.hash(latitude, longitude);
 }
 
 /// A latitude/longitude aligned rectangle.
@@ -70,7 +70,7 @@ class LatLngBounds {
   /// The latitude of the southwest corner cannot be larger than the
   /// latitude of the northeast corner.
   LatLngBounds({required this.southwest, required this.northeast})
-      : assert(southwest.latitude <= northeast.latitude);
+    : assert(southwest.latitude <= northeast.latitude);
 
   /// The southwest corner of the rectangle.
   final LatLng southwest;
@@ -106,7 +106,7 @@ class LatLngBounds {
   }
 
   @override
-  int get hashCode => hashValues(southwest, northeast);
+  int get hashCode => Object.hash(southwest, northeast);
 }
 
 /// A geographical area representing a non-aligned quadrilateral
@@ -132,7 +132,7 @@ class LatLngQuad {
       topLeft.toJson(),
       topRight.toJson(),
       bottomRight.toJson(),
-      bottomLeft.toJson()
+      bottomLeft.toJson(),
     ];
   }
 
@@ -164,7 +164,7 @@ class LatLngQuad {
   }
 
   @override
-  int get hashCode => hashValues(topLeft, topRight, bottomRight, bottomLeft);
+  int get hashCode => Object.hash(topLeft, topRight, bottomRight, bottomLeft);
 }
 
 /// User's observed location
@@ -193,15 +193,16 @@ class UserLocation {
   /// The heading of the user location, null if not available.
   final UserHeading? heading;
 
-  const UserLocation(
-      {required this.position,
-      required this.altitude,
-      required this.bearing,
-      required this.speed,
-      required this.horizontalAccuracy,
-      required this.verticalAccuracy,
-      required this.timestamp,
-      required this.heading});
+  const UserLocation({
+    required this.position,
+    required this.altitude,
+    required this.bearing,
+    required this.speed,
+    required this.horizontalAccuracy,
+    required this.verticalAccuracy,
+    required this.timestamp,
+    required this.heading,
+  });
 }
 
 /// Type represents a geomagnetic value, measured in microteslas, relative to a
@@ -233,12 +234,13 @@ class UserHeading {
 
   /// Returns a timestamp for when the magnetic heading was determined.
   final DateTime timestamp;
-  const UserHeading(
-      {required this.magneticHeading,
-      required this.trueHeading,
-      required this.headingAccuracy,
-      required this.x,
-      required this.y,
-      required this.z,
-      required this.timestamp});
+  const UserHeading({
+    required this.magneticHeading,
+    required this.trueHeading,
+    required this.headingAccuracy,
+    required this.x,
+    required this.y,
+    required this.z,
+    required this.timestamp,
+  });
 }

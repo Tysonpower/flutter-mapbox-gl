@@ -49,11 +49,11 @@ class CameraPosition {
   final double zoom;
 
   dynamic toMap() => <String, dynamic>{
-        'bearing': bearing,
-        'target': target.toJson(),
-        'tilt': tilt,
-        'zoom': zoom,
-      };
+    'bearing': bearing,
+    'target': target.toJson(),
+    'tilt': tilt,
+    'zoom': zoom,
+  };
 
   @visibleForTesting
   static CameraPosition? fromMap(dynamic json) {
@@ -80,7 +80,7 @@ class CameraPosition {
   }
 
   @override
-  int get hashCode => hashValues(bearing, target, tilt, zoom);
+  int get hashCode => Object.hash(bearing, target, tilt, zoom);
 
   @override
   String toString() =>
@@ -94,9 +94,10 @@ class CameraUpdate {
 
   /// Returns a camera update that moves the camera to the specified position.
   static CameraUpdate newCameraPosition(CameraPosition cameraPosition) {
-    return CameraUpdate._(
-      <dynamic>['newCameraPosition', cameraPosition.toMap()],
-    );
+    return CameraUpdate._(<dynamic>[
+      'newCameraPosition',
+      cameraPosition.toMap(),
+    ]);
   }
 
   /// Returns a camera update that moves the camera target to the specified
@@ -110,8 +111,13 @@ class CameraUpdate {
   /// possible zoom level. A non-zero [left], [top], [right] and [bottom] padding
   /// insets the bounding box from the map view's edges.
   /// The camera's new tilt and bearing will both be 0.0.
-  static CameraUpdate newLatLngBounds(LatLngBounds bounds,
-      {double left = 0, double top = 0, double right = 0, double bottom = 0}) {
+  static CameraUpdate newLatLngBounds(
+    LatLngBounds bounds, {
+    double left = 0,
+    double top = 0,
+    double right = 0,
+    double bottom = 0,
+  }) {
     return CameraUpdate._(<dynamic>[
       'newLatLngBounds',
       bounds.toList(),
@@ -125,9 +131,7 @@ class CameraUpdate {
   /// Returns a camera update that moves the camera target to the specified
   /// geographical location and zoom level.
   static CameraUpdate newLatLngZoom(LatLng latLng, double zoom) {
-    return CameraUpdate._(
-      <dynamic>['newLatLngZoom', latLng.toJson(), zoom],
-    );
+    return CameraUpdate._(<dynamic>['newLatLngZoom', latLng.toJson(), zoom]);
   }
 
   /// Returns a camera update that moves the camera target the specified screen
@@ -137,9 +141,7 @@ class CameraUpdate {
   /// the camera's target to a geographical location that is 50 to the east and
   /// 75 to the south of the current location, measured in screen coordinates.
   static CameraUpdate scrollBy(double dx, double dy) {
-    return CameraUpdate._(
-      <dynamic>['scrollBy', dx, dy],
-    );
+    return CameraUpdate._(<dynamic>['scrollBy', dx, dy]);
   }
 
   /// Returns a camera update that modifies the camera zoom level by the

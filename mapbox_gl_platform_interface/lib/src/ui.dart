@@ -48,35 +48,16 @@ class MapboxStyles {
 }
 
 /// The camera mode, which determines how the map camera will track the rendered location.
-enum MyLocationTrackingMode {
-  None,
-  Tracking,
-  TrackingCompass,
-  TrackingGPS,
-}
+enum MyLocationTrackingMode { None, Tracking, TrackingCompass, TrackingGPS }
 
 /// Render mode
-enum MyLocationRenderMode {
-  NORMAL,
-  COMPASS,
-  GPS,
-}
+enum MyLocationRenderMode { NORMAL, COMPASS, GPS }
 
 /// Compass View Position
-enum CompassViewPosition {
-  TopLeft,
-  TopRight,
-  BottomLeft,
-  BottomRight,
-}
+enum CompassViewPosition { TopLeft, TopRight, BottomLeft, BottomRight }
 
 /// Attribution Button Position
-enum AttributionButtonPosition {
-  TopLeft,
-  TopRight,
-  BottomLeft,
-  BottomRight,
-}
+enum AttributionButtonPosition { TopLeft, TopRight, BottomLeft, BottomRight }
 
 /// Bounds for the map camera target.
 // Used with [MapboxMapOptions] to wrap a [LatLngBounds] value. This allows
@@ -120,7 +101,7 @@ class CameraTargetBounds {
 // `maxZoom`) from not specifying anything (null `MinMaxZoomPreference`).
 class MinMaxZoomPreference {
   const MinMaxZoomPreference(this.minZoom, this.maxZoom)
-      : assert(minZoom == null || maxZoom == null || minZoom <= maxZoom);
+    : assert(minZoom == null || maxZoom == null || minZoom <= maxZoom);
 
   /// The preferred minimum zoom level or null, if unbounded from below.
   final double? minZoom;
@@ -129,8 +110,10 @@ class MinMaxZoomPreference {
   final double? maxZoom;
 
   /// Unbounded zooming.
-  static const MinMaxZoomPreference unbounded =
-      MinMaxZoomPreference(null, null);
+  static const MinMaxZoomPreference unbounded = MinMaxZoomPreference(
+    null,
+    null,
+  );
 
   dynamic toJson() => <dynamic>[minZoom, maxZoom];
 
@@ -143,7 +126,7 @@ class MinMaxZoomPreference {
   }
 
   @override
-  int get hashCode => hashValues(minZoom, maxZoom);
+  int get hashCode => Object.hash(minZoom, maxZoom);
 
   @override
   String toString() {

@@ -689,3 +689,55 @@ class ImageSourceProperties implements SourceProperties {
     );
   }
 }
+
+class CanvasSourceProperties implements SourceProperties {
+  /// Canvas HTML Element.
+  ///
+  /// Type: string
+  final String? canvas;
+  final bool? animate;
+
+  /// Corners of image specified in longitude, latitude pairs.
+  ///
+  /// Type: array
+  final List<List>? coordinates;
+
+  const CanvasSourceProperties(
+      {this.canvas, this.coordinates, this.animate = false});
+
+  CanvasSourceProperties copyWith(
+    String? canvas,
+    bool? animate,
+    List<List>? coordinates,
+  ) {
+    return CanvasSourceProperties(
+      canvas: canvas ?? this.canvas,
+      animate: animate ?? this.animate,
+      coordinates: coordinates ?? this.coordinates,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = <String, dynamic>{};
+
+    void addIfPresent(String fieldName, dynamic value) {
+      if (value != null) {
+        json[fieldName] = value;
+      }
+    }
+
+    json["type"] = "canvas";
+    addIfPresent('canvas', canvas);
+    addIfPresent('animate', animate);
+    addIfPresent('coordinates', coordinates);
+    return json;
+  }
+
+  factory CanvasSourceProperties.fromJson(Map<String, dynamic> json) {
+    return CanvasSourceProperties(
+      canvas: json['canvas'],
+      animate: json['animate'],
+      coordinates: json['coordinates'],
+    );
+  }
+}

@@ -48,7 +48,8 @@ export 'package:mapbox_gl_platform_interface/mapbox_gl_platform_interface.dart'
         RasterDemSourceProperties,
         GeojsonSourceProperties,
         VideoSourceProperties,
-        ImageSourceProperties;
+        ImageSourceProperties,
+        CanvasSourceProperties;
 
 part 'src/controller.dart';
 part 'src/mapbox_map.dart';

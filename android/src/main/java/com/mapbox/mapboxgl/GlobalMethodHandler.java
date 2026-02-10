@@ -134,6 +134,7 @@ class GlobalMethodHandler implements MethodChannel.MethodCallHandler {
     if (tilesDb.startsWith("/")) { // Absolute path.
       return new FileInputStream(new File(tilesDb));
     } else {
+      String assetKey;
       if (flutterAssets != null) {
         assetKey = flutterAssets.getAssetFilePathByName(tilesDb);
       } else {
